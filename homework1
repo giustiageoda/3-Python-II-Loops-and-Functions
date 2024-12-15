@@ -1,0 +1,6 @@
+numbers = [4, 5, 10, 20, 40, 60, 80]
+new_list = []
+for number in numbers:
+    if number > 10:
+        new_list.append(number)
+print(new_list)
