@@ -1,0 +1,13 @@
+def add_and_multiply(a, b):
+  sum = a + b
+  product = a * b
+  highest = max(a, b)
+
+  print("addition:", sum)
+  print("multiplication:", product)
+  print("Highest number:", highest)
+
+a = int(input("Enter the first number: "))
+b = int(input("Enter the second number: "))
+
+add_and_multiply(a, b)
