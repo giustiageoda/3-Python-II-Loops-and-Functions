@@ -59,10 +59,10 @@ def main():
             else:
                 print("Item not found in your order.")
 
-            print("\nYour Updated Order:")
-            for item, quantity, price in order:
-                print(f"- {quantity} x {item}: Rp {price}")
-            print(f"Total Price: Rp {total_price}")
+    print("\nYour Updated Order:")
+    for item, quantity, price in order:
+        print(f"- {quantity} x {item}: Rp {price}")
+    print(f"Total Price: Rp {total_price}")
  
 if __name__ == "__main__":
     main()
