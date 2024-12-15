@@ -1,0 +1,68 @@
+def main():
+    menu = {
+        "Latte": 15000,
+        "Americano": 10000,
+        "Espresso": 5000
+    }
+
+    order = []
+    total_price = 0
+
+    while True:
+        item_name = input("Enter item name (or 'done' to finish): ")
+        if item_name.lower() == 'done':
+            break
+
+        item_name = item_name.title()
+
+        if item_name not in menu:
+            print("Item not found in the menu. Please try again.")
+            continue
+
+        quantity = int(input("Enter quantity: "))
+        item_price = menu[item_name]
+        total_item_price = quantity * item_price
+        order.append((item_name, quantity, total_item_price))
+        total_price += total_item_price
+
+        confirm_item = input("Do you want to order another item? (yes/no): ").lower()
+        if confirm_item != 'yes':
+            break
+
+    print("\nYour Order:")
+    for item, quantity, price in order:
+        print(f"- {quantity} x {item}: Rp {price}")
+    print(f"Total Price: Rp {total_price}")
+
+    confirm_order = input("Confirm your order? (yes/no): ").lower()
+    if confirm_order == 'yes':
+        customer_name = input("Enter your name: ")
+        print(f"\nThank you for your order, {customer_name}!")
+        print("Your Order Summary:")
+        for item, quantity, price in order:
+            print(f"- {quantity} x {item}: Rp {price}")
+        print(f"Total Price: Rp {total_price}")
+    else:
+        print("\nYour order has been canceled.")
+        while True:
+            delete_item = input("Do you want to delete an item? (yes/no): ").lower()
+            if delete_item != 'yes':
+                break
+
+            item_to_delete = input("Enter the item name to delete: ").lower()
+            for i in range(len(order) - 1, -1, -1):
+                if order[i][0].lower() == item_to_delete:
+                    deleted_item = order.pop(i)
+                    total_price -= deleted_item[2]
+                    print(f"{deleted_item[0]} removed from your order.")
+                    break
+            else:
+                print("Item not found in your order.")
+
+            print("\nYour Updated Order:")
+            for item, quantity, price in order:
+                print(f"- {quantity} x {item}: Rp {price}")
+            print(f"Total Price: Rp {total_price}")
+ 
+if __name__ == "__main__":
+    main()
